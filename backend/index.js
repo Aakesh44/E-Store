@@ -7,7 +7,7 @@ const router = require('./routes/appRoute')
 
 app.use(cors(
     {
-        origin: ['https://fake-store-client.vercel.app'],
+        origin: ['https://fake-store-client.vercel.app','http://localhost:3000',"https://aakesh44.github.io/Thinsil-assignment","https://aakesh44.github.io"],
         methods:['GET', 'POST', 'PUT', 'DELETE'],
         credentials: true,
     }

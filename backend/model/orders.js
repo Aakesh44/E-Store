@@ -7,12 +7,15 @@ const orderSchema = mongoose.Schema({
         ref:"Users",
         required:true
     },
-    productId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Products",
-        required:true,
-    },
-    count:{type:Number,required:true},
+    productsId:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Products",
+            required:true,
+        }
+    ],
+
+    // count:{type:Number,required:true},
     price:{type:Number,required:true},
     date:{
         type:Date,

@@ -6,10 +6,10 @@ async function getUser(req,res){
         
         const user = await User.findOne({_id:req.params.id})
         if(!user){
-           return res.json('not found')
+           return res.status(500).json('not found')
         }
 
-        res.json(user)
+        res.status(200).json(user)
     } catch (error) {
         res.status(500).json(`Error:${error.message}`)
     }

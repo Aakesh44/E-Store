@@ -6,26 +6,24 @@ async function orderPlaced(req,res) {
     try {
 
         const userId = req.body.userId
-        const productId = req.body.productId 
-        const count = req.body.count
+        const productsId = req.body.productsId 
         const price = req.body.price 
 
-        const orders = await Order.create(
+        const placeOrder = await Order.create(
             {
                 userId:userId,
-                productId:productId,
-                count:count,
+                productsId:productsId,
                 price:price
             }
         )
         
-        const order = await Order.findOne({userId:userId})
+        const order = await Order.findById(placeOrder._id).populate("productsId")
 
         if (!order) {
-            return res.status(404).json({ message: 'order not found' });
+            return res.status(404).json({ message: 'orders not found' });
         }       
 
-        res.json({ message: 'order placed', order });
+        res.status(200).json( order );
         // console.log('liked',userProfile);
         
           
@@ -41,9 +39,9 @@ async function fetchOrder(req,res) {
         
         const userId = req.params.id 
 
-        const orders = await Order.find({userId:userId})
+        const orders = await Order.find({userId:userId}).populate("productsId")
 
-        res.json(orders);
+        res.status(200).json(orders);
 
     } catch (error) {
       res.status(500).json({ error: 'Failed to retrieve orders' });

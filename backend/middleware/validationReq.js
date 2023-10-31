@@ -5,11 +5,11 @@ const requestBody = [
     body('username').notEmpty(),
     body('email').notEmpty().isEmail(),
     body('password').notEmpty(),
-    body('dist').notEmpty(),
-    body('area').notEmpty(),
-    body('pincode').notEmpty().isNumeric(),
-    body('landmark').notEmpty(),
-    body('phone').notEmpty().isNumeric(),
+    // body('dist').notEmpty(),
+    // body('area').notEmpty(),
+    // body('pincode').notEmpty().isNumeric(),
+    // body('landmark').notEmpty(),
+    // body('phone').notEmpty().isNumeric(),
 
 ]
 
